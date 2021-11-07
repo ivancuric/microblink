@@ -4,3 +4,11 @@ dist
 dist-ssr
 *.local
 .eslintcache
+
+# copied @microblink/blinkid-in-browser-sdk
+public/advanced
+public/advanced-threads
+public/basic
+public/BlinkIDSDK.worker.min.js
+public/BlinkIDWasmSDK.worker.min.js
+public/Worker.test.js
