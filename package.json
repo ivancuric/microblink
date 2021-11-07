@@ -28,9 +28,5 @@
   },
   "dependencies": {
     "@microblink/blinkid-in-browser-sdk": "^5.14.1"
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
   }
 }
