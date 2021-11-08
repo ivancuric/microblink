@@ -1,7 +1,11 @@
 import * as BlinkIDSDK from '@microblink/blinkid-in-browser-sdk';
 import { NotSupportedReason } from '@microblink/blinkid-in-browser-sdk';
-import licenseKey from './localhost.key?raw';
+import localhostLicenceKey from './localhost.key?raw';
 import { startScan } from './startScan';
+
+// choose either the localhost licence key or the netlify hosted one
+const licencekey =
+  (import.meta.env.VITE_LICENCE_KEY as string) || localhostLicenceKey;
 
 const progressEl = document.getElementById(
   'load-progress',
@@ -15,7 +19,7 @@ const startScanButton = document.getElementById(
   'start-scan',
 ) as HTMLButtonElement;
 
-const loadSettings = new BlinkIDSDK.WasmSDKLoadSettings(licenseKey);
+const loadSettings = new BlinkIDSDK.WasmSDKLoadSettings(licencekey);
 
 loadSettings.loadProgressCallback = (progress: number) =>
   (progressEl!.value = progress);
@@ -68,5 +72,3 @@ function getErrorMessage(reason: BlinkIDSDK.NotSupportedReason) {
       return 'Unknown error';
   }
 }
-
-console.log(import.meta.env);
