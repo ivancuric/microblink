@@ -1,23 +1,28 @@
-import './style.css';
 import * as BlinkIDSDK from '@microblink/blinkid-in-browser-sdk';
 import licenseKey from './localhost.key?raw';
 
-const app = document.querySelector<HTMLDivElement>('#app')!;
+const progressEl = document.getElementById(
+  'load-progress',
+) as HTMLProgressElement;
+const loadScreenEl = document.getElementById(
+  'screen-loading',
+) as HTMLDivElement;
+const startScreenEl = document.getElementById('screen-start') as HTMLDivElement;
 
 const loadSettings = new BlinkIDSDK.WasmSDKLoadSettings(licenseKey);
-loadSettings.allowHelloMessage = true;
-loadSettings.engineLocation = window.location.origin;
 
-BlinkIDSDK.loadWasmModule(loadSettings).then(
-  () => {
-    //
-  },
-  (error: any) => {
+loadSettings.loadProgressCallback = (progress: number) =>
+  (progressEl!.value = progress);
+
+(async () => {
+  try {
+    await BlinkIDSDK.loadWasmModule(loadSettings);
+
+    loadScreenEl.classList.add('hidden');
+    startScreenEl.classList.remove('hidden');
+  } catch (error) {
     console.error('Failed to load SDK!', error);
-  },
-);
+  }
+})();
 
-app.innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>
-`;
+console.log(import.meta.env);

@@ -3,11 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Microblink Task</title>
   </head>
+
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div id="root">
+      <!-- Loading screen -->
+      <div id="screen-loading">
+        <p id="loading-msg">Loading...</p>
+        <progress id="load-progress" value="0" max="100"></progress>
+      </div>
+      <!-- Start screen -->
+      <div id="screen-start" class="hidden">
+        <button id="start-scan">Scan from camera</button>
+        <div class="input-group">
+          <label class="input-label" for="first-name">First name</label>
+          <input
+            class="input"
+            type="text"
+            name="first-name"
+            id="first-name"
+            readonly
+          />
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="last-name">Last name</label>
+          <input
+            class="input"
+            type="text"
+            name="last-name"
+            id="last-name"
+            readonly
+          />
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="birth-date">Date of birth</label>
+          <input
+            class="input"
+            type="text"
+            name="birth-date"
+            id="birth-date"
+            readonly
+          />
+        </div>
+        <div class="input-group">
+          <label class="input-label" for="expiry-date">Date of expiry</label>
+          <input
+            class="input"
+            type="text"
+            name="expiry-date"
+            id="expiry-date"
+            readonly
+          />
+        </div>
+      </div>
+      <!-- script -->
+      <script type="module" src="/src/main.ts"></script>
+    </div>
   </body>
 </html>
