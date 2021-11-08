@@ -11,19 +11,12 @@ body {
 button {
   white-space: nowrap;
   cursor: pointer;
-}
-
-button svg {
-  display: block;
-}
-
-* {
   user-select: none;
-  background-repeat: no-repeat;
 }
 
 img,
-video {
+video,
+canvas {
   display: block;
   max-width: 100%;
 }

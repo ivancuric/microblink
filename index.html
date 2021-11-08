@@ -15,9 +15,9 @@
         <p id="loading-msg">Loading...</p>
         <progress id="load-progress" value="0" max="100"></progress>
       </div>
+
       <!-- Start screen -->
       <div id="screen-start" class="hidden">
-        <button id="start-scan">Scan from camera</button>
         <div class="input-group">
           <label class="input-label" for="first-name">First name</label>
           <input
@@ -57,6 +57,19 @@
             id="expiry-date"
             readonly
           />
+        </div>
+
+        <button id="start-scan">Scan from camera</button>
+
+        <!-- Scanning -->
+        <div id="scanning-overlay">
+          <div id="scanning-window">
+            <div id="video-wrap">
+              <video id="camera-feed" playsinline></video>
+              <canvas id="camera-feedback"></canvas>
+            </div>
+            <p id="camera-guides">Scan front side of an identity document.</p>
+          </div>
         </div>
       </div>
       <!-- script -->
