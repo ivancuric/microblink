@@ -35,9 +35,6 @@ body {
   height: 100%;
   z-index: 2;
   overflow: hidden;
-  justify-items: stretch;
-  align-content: center;
-  justify-content: center;
   padding: 48px;
   visibility: hidden;
   opacity: 0;
@@ -68,10 +65,19 @@ body {
   box-shadow: 2px 4px 20px 0 rgba(0, 0, 0, 0.4);
   border-radius: 8px;
   overflow: hidden;
+  display: grid;
+  grid-template-rows: auto min-content;
 }
 
 #video-wrap {
   position: relative;
+  overflow: hidden;
+}
+
+#camera-feed {
+  z-index: 0;
+  height: 100%;
+  width: 100%;
 }
 
 #camera-feedback {
@@ -80,6 +86,7 @@ body {
   height: 100%;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 #camera-guides {
